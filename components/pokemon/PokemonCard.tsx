@@ -31,7 +31,6 @@ export const PokemonCard:FC<Props> = ({ pokemon }) => {
             <Text>#{id}</Text>
           </Row>
         </Card.Footer>
-
       </Card>
     </Grid>
 

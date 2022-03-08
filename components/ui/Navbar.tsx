@@ -1,4 +1,4 @@
-import { Link, Spacer, Switch, Text, useTheme } from '@nextui-org/react'
+import { Button, Link, Spacer, Switch, Text, useTheme } from '@nextui-org/react'
 import React, { CSSProperties } from 'react'
 import { useTheme as useNextTheme } from 'next-themes'
 import Image from 'next/image';
@@ -33,6 +33,8 @@ export const Navbar = () => {
       </NextLink>
       
       <Spacer css={{flex: 1}} />
+      <NextLink href="/favorites"><a style={{color: 'white'}}>Catched</a></NextLink>
+      <Spacer x={1}/>
       <Switch
         color="primary"
         iconOff={<i className="fa-solid fa-sun-bright"></i>}
