@@ -1,4 +1,4 @@
-import { Button, Card, Container, Grid, Row, Switch, Text, useTheme } from '@nextui-org/react'
+import { Grid, useTheme } from '@nextui-org/react';
 import type { NextPage } from 'next';
 import { Layout } from '../components/layouts';
 import { GetStaticProps } from 'next';
@@ -23,16 +23,7 @@ const HomePage: NextPage<Props> = ({ pokemons }) => {
             ))
         }
       </Grid.Container>
-
-
-    
-      
-
-      
-    </Layout>
-
-    
-    
+    </Layout> 
 )
 }
 
