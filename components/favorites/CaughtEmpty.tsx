@@ -2,7 +2,7 @@ import { Container, Image, Text } from '@nextui-org/react'
 import React from 'react'
 import { callbackify } from 'util'
 
-export const FavoritesEmpty = () => {
+export const CaughtEmpty = () => {
   return (
     <Container css={{
       display: 'flex',

@@ -37,7 +37,7 @@ export const Navbar = () => {
       <Spacer x={1}/>
       <Switch
         color="primary"
-        iconOff={<i className="fa-solid fa-sun-bright"></i>}
+        iconOff={<i  className="fa-solid fa-sun"></i>}
         iconOn={<i className="fa-solid fa-moon"></i>}
         checked={isDark}
         onChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}

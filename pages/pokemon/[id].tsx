@@ -6,11 +6,17 @@ import { Pokemon } from '../../interfaces';
 import pokeApi from '../../api/pokeApi';
 import Image from 'next/image';
 import { Button, Card, Container, Grid, Row, Text } from '@nextui-org/react';
+import { usePokemonCaught } from '../../hooks/';
+import { getPokemonInfo } from '../../utils/getPokemonInfo';
 
 interface Props {
   pokemon: Pokemon;
 }
+
 const PokemonPage: NextPage<Props> = ({ pokemon }) => {
+
+  const {isCaught, toggleCaught} = usePokemonCaught(pokemon.id);
+
   return (
     <Layout title={`Pokemon ${pokemon.name}`}>
       <Grid.Container gap={1} wrap="wrap" direction="row" justify="space-evenly">
@@ -27,12 +33,16 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
                 <Text>A ability: {pokemon.abilities[0].ability.name}</Text>
                 <Text>Height: {pokemon.height}</Text>
                 <Text>Weight: {pokemon.weight}</Text>
-                <Text>Locations: {pokemon.location_area_encounters}</Text>
+                <Text>State: {isCaught ? 'Caught' : 'No caught'}</Text>
               </Container>
             </Card.Body>
             <Card.Footer>
               <Row justify='center'>
-                <Button color="gradient" ghost shadow>Catch</Button>
+                <Button 
+                  onClick={toggleCaught}
+                  color="gradient" 
+                  ghost={!isCaught}
+                  shadow>{isCaught ? 'Release' : 'Catch' }</Button>
               </Row>
             </Card.Footer>
           </Card>
@@ -132,11 +142,10 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 
 export const getStaticProps: GetStaticProps = async ({params}) => {
   const {id} = params as {id: string};
-  console.log({params})
-  const { data } = await  pokeApi.get<Pokemon>(`pokemon/${id}`);
+  
   return {
     props: {
-      pokemon: data,
+      pokemon: await getPokemonInfo(id),
     }
   }
 }
